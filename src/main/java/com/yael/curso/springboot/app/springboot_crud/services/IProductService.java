@@ -12,6 +12,7 @@ public interface IProductService {
     List<Product> findAll();
     Optional<Product> findById(Long id);
     Product save(Product product);
+    Optional<Product> update(Long id, Product product);
     Optional<Product> remove(Long id);
 
 }

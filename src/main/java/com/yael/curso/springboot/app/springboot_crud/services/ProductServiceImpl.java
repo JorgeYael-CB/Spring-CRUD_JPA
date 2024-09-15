@@ -51,4 +51,21 @@ public class ProductServiceImpl implements IProductService {
         return productDb;
     }
 
+    @Override
+    public Optional<Product> update(Long id, Product product) {
+        Optional<Product> productDb = findById(id);
+
+        if(productDb.isPresent()) {
+            var prod = productDb.orElseThrow();
+
+            prod.setName(product.getName());
+            prod.setDescription(product.getDescription());
+            prod.setPrice(product.getPrice());
+
+            return Optional.of(productRepository.save(prod));
+        }
+
+        return productDb;
+    }
+
 }
